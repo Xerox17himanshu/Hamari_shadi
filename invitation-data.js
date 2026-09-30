@@ -31,10 +31,9 @@ window.invitationData = {
   ],
 
   events: [
-    { name: "Journey", photo: "photos/festival/Journey.png" },
-    { name: "Haldi", photo: "photos/festival/haldi.jpg" },
-    { name: "Engagement", photo: "photos/festival/engagement.jpg" },
-    { name: "Wedding", photo: "photos/festival/wedding.jpg" }
+    { name: "Journey", date: "December 2", time: "Afternoon", description: "A special moment to remember.", photo: "photos/festival/Journey.png", video: "music/WhatsApp Video 2026-09-26 at 11.35.10 AM.mp4" },
+    { name: "Haldi & Mehndi", date: "December 2", time: "Afternoon", description: "A joyful afternoon filled with colour, laughter and blessings.", photo: "photos/festival/haldi.jpg" },
+    { name: "Wedding", date: "December 3", time: "4:00 PM onwards", description: "The sacred ceremony and evening celebration of love.", photo: "photos/festival/wedding.jpg" }
   ],
   /* Example: { name: "Sangeet Night", date: "June 29", time: "7:00 PM", description: "An evening of music and dancing", dressCode: "Maroon · Gold · Cream", photo: "photos/sangeet.jpg", mapsUrl: "" } */
 

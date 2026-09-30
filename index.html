@@ -36,9 +36,10 @@
     .cover::before { top: 20%; } .cover::after { bottom: 9%; }
     .cover.is-open { opacity: 0; visibility: hidden; pointer-events: none; }
     @media (max-height: 700px) { .cover-copy { top: 8%; } .film-frame { height: 39svh; min-height: 190px; } .memory-book { height: 36svh; min-height: 190px; } .royal-scroll { min-height: 190px; } }
-    .cover-copy { position: absolute; top: 19%; text-align: center; }
-    .cover-kicker { margin: 9px 0 0; color: var(--gold-light); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; }
-    .cover-title { margin: 0; font-family: var(--serif); font-size: 28px; font-weight: 400; }
+    .cover-copy { position: absolute; top: 19%; left: 50%; width: min(92%, 560px); transform: translateX(-50%); text-align: center; }
+    .cover-kicker { margin: 9px 0 0; color: var(--gold-light); font-size: clamp(9px, 1.8vw, 12px); letter-spacing: .2em; text-transform: uppercase; }
+    .cover-title { margin: 0; font-family: var(--serif); font-size: clamp(34px, 7vw, 72px); font-weight: 400; line-height: .9; }
+    @media (max-width: 420px) { .cover { padding: 20px 12px; } .cover::before { top: 18%; } .cover-copy { top: 17%; width: 94%; } .cover-kicker { letter-spacing: .16em; } }
     .envelope-button { position: relative; display: block; width: min(79vw, 330px); aspect-ratio: 1.47; padding: 0; border: 1px solid rgba(217,191,130,.72); background: #8b171b; box-shadow: 0 25px 50px rgba(26,6,7,.36), inset 0 0 0 7px rgba(217,191,130,.08); perspective: 900px; }
     .envelope-button::before { position: absolute; z-index: 2; inset: 0; content: ''; background: linear-gradient(145deg, transparent 49.7%, rgba(57,5,10,.25) 50%, transparent 50.5%), linear-gradient(35deg, transparent 49.7%, rgba(57,5,10,.2) 50%, transparent 50.5%); }
     .envelope-pattern { position: absolute; inset: 14px; border: 1px solid rgba(217,191,130,.21); background: repeating-linear-gradient(135deg, transparent 0 12px, rgba(245,223,180,.025) 13px 14px); }
@@ -112,8 +113,10 @@
     .journey-count { color: #f0d090; font-size: 10px; font-variant-numeric: tabular-nums; letter-spacing: .12em; }
     .journey-close, .journey-button { display: grid; width: 42px; height: 42px; flex: none; place-items: center; border: 1px solid rgba(229,190,111,.58); border-radius: 50%; color: #fff4db; background: rgba(255,255,255,.04); }
     .journey-close svg, .journey-button svg { width: 18px; height: 18px; }
-    .journey-stage { position: relative; display: grid; width: min(100%, 900px); height: min(73svh, 760px); min-height: 260px; place-items: center; overflow: hidden; border: 1px solid rgba(229,190,111,.74); background: rgba(0,0,0,.15); box-shadow: 0 20px 65px rgba(0,0,0,.38); }
-    .journey-image { display: block; width: 100%; height: 100%; object-fit: contain; opacity: 1; transform: scale(1); }
+    .journey-stage { position: relative; display: grid; width: 100%; max-width: 100vw; height: min(80svh, calc(100vh - 100px)); min-height: 260px; place-items: center; overflow: hidden; border: 0; background: #000; box-shadow: none; }
+    .journey-image, .journey-video { display: block; width: 100%; height: 100%; object-fit: cover; opacity: 1; transform: scale(1); }
+    .journey-video { background: #000; }
+    .journey-image[hidden], .journey-video[hidden] { display: none; }
     .journey-image.is-zooming { animation: journey-zoom .72s cubic-bezier(.16,.75,.2,1) both; }
     @keyframes journey-zoom { 0% { opacity: 0; transform: scale(.68); filter: blur(8px); } 65% { opacity: 1; filter: blur(0); } 100% { opacity: 1; transform: scale(1); } }
     .journey-caption { min-height: 25px; color: #f9eed9; font-family: var(--serif); font-size: 20px; font-style: italic; text-align: center; }
@@ -302,7 +305,10 @@
   <div class="modal-backdrop" id="successModal" role="dialog" aria-modal="true" aria-labelledby="successTitle" aria-describedby="successMessage"><div class="success-modal"><div class="success-mark" aria-hidden="true">✓</div><h2 id="successTitle">Thank you</h2><p id="successMessage">We can't wait to celebrate together.</p><button class="modal-close" id="modalClose" type="button">Back to invitation</button></div></div>
   <div class="photo-journey" id="photoJourney" role="dialog" aria-modal="true" aria-label="Couple photo journey" hidden>
     <div class="journey-top"><span class="journey-count" id="journeyCount"></span><button class="journey-close" id="journeyClose" type="button" aria-label="Close photo viewer" title="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
-    <div class="journey-stage"><img class="journey-image" id="journeyImage" alt=""></div>
+    <div class="journey-stage">
+      <img class="journey-image" id="journeyImage" alt="" hidden>
+      <video class="journey-video" id="journeyVideo" controls playsinline preload="metadata" hidden></video>
+    </div>
     <div class="journey-caption" id="journeyCaption"></div>
     <div class="journey-progress" id="journeyProgress" aria-hidden="true"><span></span></div>
     <div class="journey-controls" id="journeyControls">
@@ -591,6 +597,7 @@
 
       const photoJourney = document.getElementById('photoJourney');
       const journeyImage = document.getElementById('journeyImage');
+      const journeyVideo = document.getElementById('journeyVideo');
       const journeyCaption = document.getElementById('journeyCaption');
       const journeyCount = document.getElementById('journeyCount');
       const journeyProgress = document.getElementById('journeyProgress');
@@ -615,7 +622,8 @@
       function stopPhotoJourney() {
         window.clearInterval(journeyTimer);
         journeyTimer = undefined;
-        journeyProgress.classList.add('is-paused');
+        if (journeyVideo && !journeyVideo.paused) journeyVideo.pause();
+        if (journeyProgress) journeyProgress.classList.add('is-paused');
       }
 
       function startPhotoJourney() {
@@ -661,16 +669,54 @@
         });
       }
 
+      function openVideoJourney(videoSrc, title, trigger) {
+        journeyPreviousFocus = trigger;
+        journeyImage.hidden = true;
+        journeyVideo.hidden = false;
+        journeyVideo.src = videoSrc;
+        journeyVideo.load();
+        journeyVideo.setAttribute('playsinline', 'true');
+        journeyVideo.muted = false;
+        journeyVideo.controls = true;
+        journeyCaption.textContent = title;
+        journeyCount.textContent = 'VIDEO';
+        photoJourney.hidden = false;
+        document.body.classList.add('photo-journey-open');
+        journeyProgress.classList.add('is-paused');
+        journeyToggle.hidden = true;
+        photoJourney.classList.add('is-open');
+        if (backgroundMusic) {
+          backgroundMusic.pause();
+          audioToggle.classList.remove('is-playing');
+          audioToggle.setAttribute('aria-pressed', 'false');
+          audioToggle.setAttribute('aria-label', 'Turn on ambient music');
+        }
+        window.setTimeout(() => journeyVideo.play().catch(() => {}), 150);
+        document.getElementById('journeyClose').focus();
+      }
+
       function closePhotoJourney() {
         stopPhotoJourney();
+        if (journeyVideo) {
+          journeyVideo.pause();
+          journeyVideo.currentTime = 0;
+          journeyVideo.hidden = true;
+          journeyVideo.removeAttribute('src');
+        }
+        if (journeyImage) journeyImage.hidden = false;
+        if (journeyToggle) journeyToggle.hidden = false;
         photoJourney.classList.remove('is-open');
         document.body.classList.remove('photo-journey-open');
+        if (backgroundMusic && audioToggle.getAttribute('aria-pressed') === 'true') {
+          backgroundMusic.play().catch(() => {});
+        }
         window.setTimeout(() => {
           photoJourney.hidden = true;
           journeyPreviousFocus?.focus();
         }, reducedMotion ? 0 : 330);
       }
 
+      journeyVideo.addEventListener('ended', () => closePhotoJourney());
       document.getElementById('journeyPrev').addEventListener('click', () => stepPhotoJourney(-1));
       document.getElementById('journeyNext').addEventListener('click', () => stepPhotoJourney(1));
       document.getElementById('journeyClose').addEventListener('click', closePhotoJourney);
@@ -771,6 +817,16 @@
         dot.setAttribute('aria-current', index === 0 ? 'true' : 'false');
         dot.addEventListener('click', () => setActiveEvent(index));
         eventDots.append(dot);
+      });
+      eventCards.forEach((card, index) => {
+        const eventData = details.events[index];
+        card.addEventListener('click', () => {
+          if (eventData && eventData.video) {
+            openVideoJourney(eventData.video, eventData.name, card);
+            return;
+          }
+          setActiveEvent(index);
+        });
       });
       const eventObserver = new IntersectionObserver(entries => {
         entries.forEach(entry => {
