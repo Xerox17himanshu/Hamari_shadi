@@ -31,9 +31,9 @@ window.invitationData = {
   ],
 
   events: [
-    { name: "Engagement", photo: "photos/festival/engagement.jpg" },
-    { name: "Haldi", photo: "photos/festival/haldi.jpg" },
     { name: "Journey", photo: "photos/festival/Journey.png" },
+    { name: "Haldi", photo: "photos/festival/haldi.jpg" },
+    { name: "Engagement", photo: "photos/festival/engagement.jpg" },
     { name: "Wedding", photo: "photos/festival/wedding.jpg" }
   ],
   /* Example: { name: "Sangeet Night", date: "June 29", time: "7:00 PM", description: "An evening of music and dancing", dressCode: "Maroon · Gold · Cream", photo: "photos/sangeet.jpg", mapsUrl: "" } */
@@ -42,6 +42,6 @@ window.invitationData = {
   songs: [],
   /* Example: { title: "Song title", artist: "Artist name" } */
 
-  /* Optional. Example: "music/wedding-instrumental.mp3" */
-  musicSrc: ""
+  /* Background music starts after the envelope is opened. */
+  musicSrc: "music/wedding-music.mp3"
 };

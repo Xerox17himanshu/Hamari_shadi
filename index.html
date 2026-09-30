@@ -33,10 +33,11 @@
     .page { position: relative; width: min(100%, 480px); min-height: 100vh; margin: 0 auto; overflow: hidden; background: var(--ivory); box-shadow: 0 0 70px rgba(0,0,0,.35); }
     .cover { position: fixed; z-index: 10; inset: 0; display: grid; place-items: center; width: min(100%, 480px); margin: auto; padding: 28px; overflow: hidden; color: var(--ivory); background: radial-gradient(ellipse at 50% 43%, #8b2926 0, var(--wine) 50%, var(--wine-dark) 100%); transition: opacity .8s ease, visibility .8s ease; }
     .cover::before, .cover::after { position: absolute; content: ''; width: 125%; height: 1px; left: -12%; background: linear-gradient(90deg, transparent, rgba(217,191,130,.5), transparent); }
-    .cover::before { top: 9%; } .cover::after { bottom: 9%; }
+    .cover::before { top: 20%; } .cover::after { bottom: 9%; }
     .cover.is-open { opacity: 0; visibility: hidden; pointer-events: none; }
-    .cover-copy { position: absolute; top: 13%; text-align: center; }
-    .cover-kicker { margin: 0 0 9px; color: var(--gold-light); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; }
+    @media (max-height: 700px) { .cover-copy { top: 8%; } .film-frame { height: 39svh; min-height: 190px; } .memory-book { height: 36svh; min-height: 190px; } .royal-scroll { min-height: 190px; } }
+    .cover-copy { position: absolute; top: 19%; text-align: center; }
+    .cover-kicker { margin: 9px 0 0; color: var(--gold-light); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; }
     .cover-title { margin: 0; font-family: var(--serif); font-size: 28px; font-weight: 400; }
     .envelope-button { position: relative; display: block; width: min(79vw, 330px); aspect-ratio: 1.47; padding: 0; border: 1px solid rgba(217,191,130,.72); background: #8b171b; box-shadow: 0 25px 50px rgba(26,6,7,.36), inset 0 0 0 7px rgba(217,191,130,.08); perspective: 900px; }
     .envelope-button::before { position: absolute; z-index: 2; inset: 0; content: ''; background: linear-gradient(145deg, transparent 49.7%, rgba(57,5,10,.25) 50%, transparent 50.5%), linear-gradient(35deg, transparent 49.7%, rgba(57,5,10,.2) 50%, transparent 50.5%); }
@@ -48,16 +49,18 @@
     .seal::before { position: absolute; inset: -6px; content: ''; border: 1px solid rgba(217,191,130,.65); border-radius: 50%; }
     .tap-hint { position: absolute; bottom: 13%; color: var(--gold-light); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; animation: pulse 2s ease-in-out infinite; }
     .cover-ornament { position: absolute; bottom: 8%; color: rgba(217,191,130,.65); font-family: var(--serif); font-size: 19px; }
+    @media (max-height: 700px) { .cover-copy { top: 8%; } .film-frame { height: 39svh; min-height: 190px; } .memory-book { height: 36svh; min-height: 190px; } .royal-scroll { min-height: 190px; } }
     @keyframes pulse { 50% { opacity: .45; } }
     .invitation { opacity: 0; transition: opacity .8s ease .25s; }
     .invitation.is-visible { opacity: 1; }
     .hero { position: relative; min-height: 680px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 78px 32px 54px; text-align: center; overflow: hidden; }
     .hero::before { position: absolute; inset: 20px 14px; border: 1px solid rgba(177,138,66,.45); content: ''; pointer-events: none; }
     .hero::after { position: absolute; top: 35px; width: 115px; height: 115px; content: ''; border: 1px solid rgba(177,138,66,.28); border-radius: 50%; box-shadow: 0 0 0 9px rgba(177,138,66,.045), 0 0 0 19px rgba(177,138,66,.035); }
-    .ganesh { z-index: 1; display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 74px; margin-top: 5px; color: var(--gold); }
-    .ganesh-icon { width: 54px; height: 54px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.55; stroke-linecap: round; stroke-linejoin: round; }
-    .om-symbol { color: var(--gold); font-family: var(--serif); font-size: 39px; line-height: 1; }
-    .invocation { margin: 11px 0 27px; color: var(--wine); font-family: var(--serif); font-size: 17px; }
+    .ganesh { position: absolute; z-index: 1; top: 35px; left: 50%; display: flex; width: 115px; height: 115px; flex-direction: column; align-items: center; justify-content: flex-start; gap: 1px; padding-top: 5px; transform: translateX(-50%); color: var(--gold); }
+    .om-symbol { color: var(--gold); font-family: var(--serif); font-size: 19px; line-height: 1; }
+    .ganesh-image-wrap { display: block; width: 91px; height: 82px; overflow: hidden; border-radius: 50%; }
+    .ganesh-image { display: block; width: 145px; height: 94px; max-width: none; transform: translateX(-27px) translateY(-4px); object-fit: cover; object-position: 50% 17%; }
+    .invocation { max-width: 355px; margin: 100px auto 22px; color: var(--wine); font-family: var(--serif); font-size: 15px; line-height: 1.45; }
     .intro { max-width: 295px; margin: 0 auto 16px; color: var(--muted); font-family: var(--serif); font-size: 20px; line-height: 1.35; }
     .couple-names { margin: 0; color: var(--wine); font-family: var(--serif); font-size: clamp(54px, 14vw, 72px); font-weight: 500; line-height: .86; }
     .ampersand { display: block; margin: 9px 0 4px; color: var(--gold); font-size: 39px; font-style: italic; }
@@ -83,17 +86,48 @@
     .count-unit { padding: 11px 4px 9px; border-top: 1px solid var(--gold-light); border-bottom: 1px solid var(--gold-light); }
     .count-number { display: block; color: var(--wine); font-family: var(--serif); font-size: 28px; line-height: 1; font-variant-numeric: tabular-nums; }
     .count-unit small { display: block; margin-top: 6px; color: var(--muted); font-size: 8px; letter-spacing: .1em; text-transform: uppercase; }
-    .story-stage { position: relative; width: 100%; height: 330px; margin: 28px auto 16px; }
-    .polaroid { position: absolute; top: 5px; left: 50%; width: 225px; padding: 10px 10px 43px; transform: translateX(-50%) rotate(-4deg); background: #fffdfa; box-shadow: 0 13px 25px rgba(61,39,28,.2); transition: transform .35s ease, opacity .3s ease; }
-    .polaroid img { display: block; width: 100%; height: 250px; object-fit: cover; }
-    .polaroid figcaption { position: absolute; right: 0; bottom: 12px; left: 0; color: #74645b; font-family: var(--serif); font-size: 17px; font-style: italic; }
-    .photo-placeholder { display: grid; width: 100%; height: 250px; place-items: center; color: var(--gold-light); background: radial-gradient(circle at center, rgba(217,191,130,.2), transparent 46%), repeating-linear-gradient(45deg, #6a2423 0 1px, #742c29 1px 8px); text-align: center; }
+    .story-section { padding: 52px 12px; }
+    .photo-carousel { width: min(100%, 370px); margin: 28px auto 4px; }
+    .photo-polaroid { margin: 0 auto; padding: 10px 10px 0; border: 1px solid rgba(177,138,66,.45); background: #fffdfa; box-shadow: 0 18px 35px rgba(61,39,28,.18); transform: rotate(-1deg); transition: transform .35s ease, opacity .35s ease; }
+    .photo-polaroid.is-changing { animation: photo-slide-in .48s cubic-bezier(.2,.75,.2,1) both; }
+    @keyframes photo-slide-in { from { opacity: .35; transform: translateX(22px) rotate(1deg) scale(.975); } to { opacity: 1; transform: translateX(0) rotate(-1deg) scale(1); } }
+    .photo-frame { display: block; width: 100%; height: min(54svh, 470px); min-height: 245px; overflow: hidden; padding: 0; border: 0; background: #eee6db; }
+    .photo-frame img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .65s ease; }
+    .photo-frame:hover img { transform: scale(1.025); }
+    .photo-polaroid figcaption { display: flex; min-height: 54px; flex-direction: column; align-items: center; justify-content: center; padding: 7px 4px 5px; color: #74645b; font-family: var(--serif); font-size: 19px; font-style: italic; text-align: center; }
+    .photo-wall-number { display: block; margin-bottom: 2px; color: var(--gold); font-family: var(--sans); font-size: 8px; font-style: normal; letter-spacing: .12em; }
+    .photo-slider-controls { display: flex; align-items: center; justify-content: center; gap: 22px; margin-top: 18px; }
+    .photo-slider-button { display: grid; width: 42px; height: 42px; place-items: center; border: 1px solid var(--line); border-radius: 50%; color: var(--wine); background: transparent; transition: color .2s, background .2s, transform .2s; }
+    .photo-slider-button:hover { transform: scale(1.06); color: var(--ivory); background: var(--wine); }
+    .photo-slider-button svg { width: 17px; height: 17px; }
+    .photo-slider-count { min-width: 50px; color: var(--muted); font-size: 10px; font-variant-numeric: tabular-nums; text-align: center; }
+    .event-slider-controls { display: flex; align-items: center; justify-content: center; gap: 22px; margin: 14px 0 0; }
+    .event-slider-button { display: grid; width: 42px; height: 42px; place-items: center; border: 1px solid var(--line); border-radius: 50%; color: var(--wine); background: transparent; transition: color .2s, background .2s, transform .2s; }
+    .event-slider-button:hover { transform: scale(1.06); color: var(--ivory); background: var(--wine); }
+    .event-slider-button svg { width: 17px; height: 17px; }
+    .photo-journey { position: fixed; z-index: 30; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 18px; color: #fff6e2; background: radial-gradient(ellipse at 50% 42%, #482124, #1a0d10 78%); opacity: 0; visibility: hidden; pointer-events: none; transition: opacity .32s ease, visibility .32s ease; }
+    .photo-journey[hidden] { display: none; }
+    .photo-journey.is-open { opacity: 1; visibility: visible; pointer-events: auto; }
+    .journey-top, .journey-controls { display: flex; width: min(100%, 900px); align-items: center; justify-content: space-between; }
+    .journey-count { color: #f0d090; font-size: 10px; font-variant-numeric: tabular-nums; letter-spacing: .12em; }
+    .journey-close, .journey-button { display: grid; width: 42px; height: 42px; flex: none; place-items: center; border: 1px solid rgba(229,190,111,.58); border-radius: 50%; color: #fff4db; background: rgba(255,255,255,.04); }
+    .journey-close svg, .journey-button svg { width: 18px; height: 18px; }
+    .journey-stage { position: relative; display: grid; width: min(100%, 900px); height: min(73svh, 760px); min-height: 260px; place-items: center; overflow: hidden; border: 1px solid rgba(229,190,111,.74); background: rgba(0,0,0,.15); box-shadow: 0 20px 65px rgba(0,0,0,.38); }
+    .journey-image { display: block; width: 100%; height: 100%; object-fit: contain; opacity: 1; transform: scale(1); }
+    .journey-image.is-zooming { animation: journey-zoom .72s cubic-bezier(.16,.75,.2,1) both; }
+    @keyframes journey-zoom { 0% { opacity: 0; transform: scale(.68); filter: blur(8px); } 65% { opacity: 1; filter: blur(0); } 100% { opacity: 1; transform: scale(1); } }
+    .journey-caption { min-height: 25px; color: #f9eed9; font-family: var(--serif); font-size: 20px; font-style: italic; text-align: center; }
+    .journey-progress { width: min(100%, 900px); height: 2px; overflow: hidden; background: rgba(240,208,144,.2); }
+    .journey-progress span { display: block; width: 100%; height: 100%; transform: scaleX(0); transform-origin: left; background: #e2bd72; }
+    .journey-progress.is-running span { animation: journey-progress 4.5s linear forwards; }
+    .journey-progress.is-paused span { animation-play-state: paused; }
+    @keyframes journey-progress { to { transform: scaleX(1); } }
+    body.photo-journey-open { overflow: hidden; }
+    @media (prefers-reduced-motion: reduce) { .photo-polaroid, .journey-image { transition: none; animation: none !important; opacity: 1; transform: none; } }
+    .photo-placeholder { display: grid; width: 100%; min-height: 280px; place-items: center; color: var(--gold-light); background: radial-gradient(circle at center, rgba(217,191,130,.2), transparent 46%), repeating-linear-gradient(45deg, #6a2423 0 1px, #742c29 1px 8px); text-align: center; }
     .photo-placeholder span { font-family: var(--serif); font-size: 25px; line-height: 1.05; }
     .photo-placeholder small { display: block; margin-top: 9px; font-family: var(--sans); font-size: 8px; letter-spacing: .15em; text-transform: uppercase; }
-    .photo-placeholder[hidden], .polaroid img[hidden], .venue-photo img[hidden], .venue-map[hidden], .story-controls[hidden], .audio-toggle[hidden] { display: none; }
-    .story-controls { display: flex; justify-content: center; align-items: center; gap: 17px; }
-    .icon-button { display: grid; place-items: center; width: 36px; height: 36px; border: 1px solid var(--line); border-radius: 50%; color: var(--wine); background: transparent; font-size: 18px; }
-    .story-index { min-width: 50px; color: var(--muted); font-size: 10px; font-variant-numeric: tabular-nums; }
+    .photo-placeholder[hidden], .venue-photo img[hidden], .venue-map[hidden], .audio-toggle[hidden] { display: none; }
     .venue-photo { position: relative; height: 244px; margin: 24px -28px 22px; overflow: hidden; background: radial-gradient(ellipse at 50% 85%, rgba(217,191,130,.45), transparent 48%), repeating-linear-gradient(135deg, #e5d9c7 0 2px, #ece3d6 2px 10px); }
     .venue-photo img { width: 100%; height: 100%; object-fit: cover; }
     .venue-photo::after { position: absolute; inset: 35% 0 0; content: ''; background: linear-gradient(transparent, rgba(35,23,18,.38)); }
@@ -191,17 +225,10 @@
     <div class="invitation" id="invitation" aria-hidden="true" inert>
       <section class="hero" aria-labelledby="coupleNames">
         <div class="ganesh">
-          <svg class="ganesh-icon" viewBox="0 0 64 64" role="img" aria-labelledby="ganeshTitle">
-            <title id="ganeshTitle">Ganpati Ji</title>
-            <path d="M24 19v-7l8-6 8 6v7M22 19h20M28 11h8"/>
-            <path d="M25 20c-5-5-14-5-17 2-3 8 1 17 9 19 3 1 6 0 9-3M39 20c5-5 14-5 17 2 3 8-1 17-9 19-3 1-6 0-9-3"/>
-            <path d="M25 20c-2 5-2 12 1 17 2 3 5 5 8 5s6-2 8-5c3-5 3-12 1-17"/>
-            <path d="M27 29h.1M37 29h.1M32 30c-1 5-5 7-4 11 1 4 7 4 10 1 2-2 1-5-2-6"/>
-            <path d="M23 43c-3 2-5 6-5 10l8-3 6 5 6-5 8 3c0-4-2-8-5-10M18 57h28M22 53c-4 0-7 2-9 5M42 53c4 0 7 2 9 5"/>
-          </svg>
           <span class="om-symbol" lang="sa" aria-label="Om">ॐ</span>
+          <span class="ganesh-image-wrap"><img class="ganesh-image" src="photos/ganesh.jpg" alt="Ganpati Ji" loading="eager"></span>
         </div>
-        <p class="invocation" lang="sa">॥ श्री गणेशाय नमः ॥</p>
+        <p class="invocation" lang="sa">वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ । निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा ॥</p>
         <p class="intro" id="invitationLine"></p>
         <h1 class="couple-names" id="coupleNames"><span id="brideName"></span><span class="ampersand">&amp;</span><span id="groomName"></span></h1>
         <p class="parents"><span id="familyLine"></span><br><strong id="familyBlessing"></strong></p>
@@ -225,13 +252,20 @@
           <div class="count-unit"><span class="count-number" id="seconds">00</span><small>Seconds</small></div>
         </div>
       </section>
-      <section class="section" aria-labelledby="storyHeading">
+      <section class="section story-section" aria-labelledby="storyHeading">
         <p class="eyebrow">A little bit of us</p><h2 class="section-title" id="storyHeading">Forever Us</h2>
         <p class="section-copy">The small moments became our favorite story.</p>
-        <div class="story-stage" id="storyStage" aria-live="polite">
-          <figure class="polaroid" id="polaroid"><img id="storyImage" alt=""><div class="photo-placeholder" id="storyPlaceholder"><span><b id="photoInitials">M &amp; A</b><small>Photos coming soon</small></span></div><figcaption id="storyCaption"></figcaption></figure>
+        <div class="photo-carousel" id="photoCarousel" role="region" aria-label="Couple photo gallery">
+          <figure class="photo-polaroid" id="photoPolaroid">
+            <button class="photo-frame" id="photoOpen" type="button" aria-label="Open photo fullscreen"><img id="wallPhoto" alt=""></button>
+            <figcaption><span class="photo-wall-number" id="wallPhotoNumber"></span><span id="wallPhotoCaption"></span></figcaption>
+          </figure>
+          <div class="photo-slider-controls">
+            <button class="photo-slider-button" id="wallPhotoPrev" type="button" aria-label="Previous photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m14 5-7 7 7 7"/><path d="M8 12h11"/></svg></button>
+            <span class="photo-slider-count" id="wallPhotoCount" aria-live="polite"></span>
+            <button class="photo-slider-button" id="wallPhotoNext" type="button" aria-label="Next photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m10 5 7 7-7 7"/><path d="M5 12h11"/></svg></button>
+          </div>
         </div>
-        <div class="story-controls" id="storyControls" hidden><button class="icon-button" id="storyPrev" type="button" aria-label="Previous photo">‹</button><span class="story-index" id="storyIndex"></span><button class="icon-button" id="storyNext" type="button" aria-label="Next photo">›</button></div>
       </section>
       <section class="section section-paper" aria-labelledby="venueHeading">
         <p class="eyebrow">Where our forever begins</p><h2 class="section-title" id="venueHeading">The Venue</h2>
@@ -242,7 +276,11 @@
       <section class="section events-section" aria-labelledby="eventsHeading">
         <div class="section-heading"><p class="eyebrow">Come celebrate with us</p><h2 class="section-title" id="eventsHeading">The Festivities</h2><p class="section-copy">Every gathering has a little magic of its own.</p></div>
         <div class="event-track" id="eventTrack" tabindex="0" aria-label="Wedding festivities, swipe to browse"></div>
-        <div class="event-dots" id="eventDots" aria-label="Choose an event"></div>
+        <div class="event-slider-controls">
+          <button class="event-slider-button" id="eventPrev" type="button" aria-label="Previous event"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m14 5-7 7 7 7"/><path d="M8 12h11"/></svg></button>
+          <div class="event-dots" id="eventDots" aria-label="Choose an event"></div>
+          <button class="event-slider-button" id="eventNext" type="button" aria-label="Next event"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m10 5 7 7-7 7"/><path d="M5 12h11"/></svg></button>
+        </div>
       </section>
       <section class="section rsvp-section" id="rsvp" aria-labelledby="rsvpHeading">
         <div class="section-heading"><p class="eyebrow">We hope you can join us</p><h2 class="section-title" id="rsvpHeading">Kindly reply</h2><p class="section-copy">Your presence would mean the world to us.</p></div>
@@ -262,6 +300,17 @@
     </div>
   </main>
   <div class="modal-backdrop" id="successModal" role="dialog" aria-modal="true" aria-labelledby="successTitle" aria-describedby="successMessage"><div class="success-modal"><div class="success-mark" aria-hidden="true">✓</div><h2 id="successTitle">Thank you</h2><p id="successMessage">We can't wait to celebrate together.</p><button class="modal-close" id="modalClose" type="button">Back to invitation</button></div></div>
+  <div class="photo-journey" id="photoJourney" role="dialog" aria-modal="true" aria-label="Couple photo journey" hidden>
+    <div class="journey-top"><span class="journey-count" id="journeyCount"></span><button class="journey-close" id="journeyClose" type="button" aria-label="Close photo viewer" title="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
+    <div class="journey-stage"><img class="journey-image" id="journeyImage" alt=""></div>
+    <div class="journey-caption" id="journeyCaption"></div>
+    <div class="journey-progress" id="journeyProgress" aria-hidden="true"><span></span></div>
+    <div class="journey-controls" id="journeyControls">
+      <button class="journey-button" id="journeyPrev" type="button" aria-label="Previous photo" title="Previous photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m14 5-7 7 7 7"/><path d="M8 12h11"/></svg></button>
+      <button class="journey-button" id="journeyToggle" type="button" aria-label="Pause photo journey" aria-pressed="false" title="Pause"><svg class="journey-pause-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg><svg class="journey-play-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true" hidden><path d="m8 5 12 7-12 7z"/></svg></button>
+      <button class="journey-button" id="journeyNext" type="button" aria-label="Next photo" title="Next photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m10 5 7 7-7 7"/><path d="M5 12h11"/></svg></button>
+    </div>
+  </div>
   <script src="invitation-data.js"></script>
   <script>
     (() => {
@@ -280,7 +329,6 @@
         document.querySelector('meta[name="description"]').content = `A wedding invitation celebrating ${details.bride} and ${details.groom}, ${details.dateLabel}.`;
         document.getElementById('reveal').setAttribute('aria-label', `Open ${details.bride} and ${details.groom}'s wedding invitation`);
         document.getElementById('sealInitials').textContent = `${details.bride[0]} & ${details.groom[0]}`;
-        document.getElementById('photoInitials').textContent = `${details.bride[0]} & ${details.groom[0]}`;
         document.getElementById('brideName').textContent = details.bride;
         document.getElementById('groomName').textContent = details.groom;
         document.getElementById('invitationLine').textContent = details.invitationLine;
@@ -509,26 +557,146 @@
       window.setInterval(updateCountdown, 1000);
 
       const photos = details.photos;
-      let photoIndex = 0;
-      function showPhoto(nextIndex) {
-        photoIndex = (nextIndex + photos.length) % photos.length;
-        const image = document.getElementById('storyImage');
-        const polaroid = document.getElementById('polaroid');
-        polaroid.style.transform = `translateX(-50%) rotate(${photoIndex % 2 ? 3 : -4}deg)`;
-        image.src = photos[photoIndex].src;
-        image.alt = photos[photoIndex].alt || '';
-        image.hidden = false;
-        document.getElementById('storyPlaceholder').hidden = true;
-        document.getElementById('storyCaption').textContent = photos[photoIndex].caption || '';
-        document.getElementById('storyIndex').textContent = `${String(photoIndex + 1).padStart(2, '0')} / ${String(photos.length).padStart(2, '0')}`;
+      const photoPolaroid = document.getElementById('photoPolaroid');
+      const wallPhoto = document.getElementById('wallPhoto');
+      const wallPhotoCaption = document.getElementById('wallPhotoCaption');
+      const wallPhotoNumber = document.getElementById('wallPhotoNumber');
+      let wallPhotoIndex = 0;
+
+      function showWallPhoto(index, direction = 1) {
+        if (!photos.length) return;
+        wallPhotoIndex = (index + photos.length) % photos.length;
+        const photo = photos[wallPhotoIndex];
+        photoPolaroid.classList.remove('is-changing', 'slide-from-left', 'slide-from-right');
+        wallPhoto.src = photo.src;
+        wallPhoto.alt = photo.alt || '';
+        wallPhotoCaption.textContent = photo.caption || 'A moment to remember';
+        wallPhotoNumber.textContent = `${String(wallPhotoIndex + 1).padStart(2, '0')} / ${String(photos.length).padStart(2, '0')}`;
+        document.getElementById('wallPhotoCount').textContent = wallPhotoNumber.textContent;
+        document.getElementById('photoOpen').setAttribute('aria-label', `Open photo ${wallPhotoIndex + 1} fullscreen`);
+        photoPolaroid.classList.add(direction < 0 ? 'slide-from-left' : 'slide-from-right');
+        requestAnimationFrame(() => photoPolaroid.classList.add('is-changing'));
       }
-      document.getElementById('storyControls').hidden = photos.length < 2;
-      if (photos.length) showPhoto(0);
-      document.getElementById('storyPrev').addEventListener('click', () => { if (photos.length > 1) showPhoto(photoIndex - 1); });
-      document.getElementById('storyNext').addEventListener('click', () => { if (photos.length > 1) showPhoto(photoIndex + 1); });
-      let touchStart = 0;
-      document.getElementById('storyStage').addEventListener('touchstart', event => { touchStart = event.changedTouches[0].screenX; }, { passive: true });
-      document.getElementById('storyStage').addEventListener('touchend', event => { const delta = event.changedTouches[0].screenX - touchStart; if (photos.length > 1 && Math.abs(delta) > 45) showPhoto(photoIndex + (delta < 0 ? 1 : -1)); }, { passive: true });
+
+      if (photos.length) showWallPhoto(0, 1);
+      document.getElementById('photoOpen').addEventListener('click', () => openPhotoJourney(wallPhotoIndex, document.getElementById('photoOpen')));
+      document.getElementById('wallPhotoPrev').addEventListener('click', () => showWallPhoto(wallPhotoIndex - 1, -1));
+      document.getElementById('wallPhotoNext').addEventListener('click', () => showWallPhoto(wallPhotoIndex + 1, 1));
+      let photoTouchStart = 0;
+      document.getElementById('photoCarousel').addEventListener('touchstart', event => { photoTouchStart = event.changedTouches[0].screenX; }, { passive: true });
+      document.getElementById('photoCarousel').addEventListener('touchend', event => {
+        const delta = event.changedTouches[0].screenX - photoTouchStart;
+        if (Math.abs(delta) > 45) showWallPhoto(wallPhotoIndex + (delta < 0 ? 1 : -1), delta < 0 ? 1 : -1);
+      }, { passive: true });
+
+      const photoJourney = document.getElementById('photoJourney');
+      const journeyImage = document.getElementById('journeyImage');
+      const journeyCaption = document.getElementById('journeyCaption');
+      const journeyCount = document.getElementById('journeyCount');
+      const journeyProgress = document.getElementById('journeyProgress');
+      const journeyToggle = document.getElementById('journeyToggle');
+      let journeyIndex = 0;
+      let journeyTimer;
+      let journeyIsPaused = reducedMotion;
+      let journeyPreviousFocus;
+
+      function updateJourneyPhoto(animate = true) {
+        const photo = photos[journeyIndex];
+        journeyImage.alt = photo.alt || '';
+        journeyImage.src = photo.src;
+        journeyCaption.textContent = photo.caption || 'A moment to remember';
+        journeyCount.textContent = `${String(journeyIndex + 1).padStart(2, '0')} / ${String(photos.length).padStart(2, '0')}`;
+        journeyImage.classList.remove('is-zooming');
+        journeyProgress.classList.remove('is-running');
+        if (animate && !reducedMotion) requestAnimationFrame(() => journeyImage.classList.add('is-zooming'));
+        if (!journeyIsPaused) requestAnimationFrame(() => journeyProgress.classList.add('is-running'));
+      }
+
+      function stopPhotoJourney() {
+        window.clearInterval(journeyTimer);
+        journeyTimer = undefined;
+        journeyProgress.classList.add('is-paused');
+      }
+
+      function startPhotoJourney() {
+        if (photos.length < 2 || journeyTimer || document.hidden) return;
+        if (reducedMotion) return;
+        journeyIsPaused = false;
+        journeyToggle.setAttribute('aria-pressed', 'false');
+        journeyToggle.setAttribute('aria-label', 'Pause photo journey');
+        journeyToggle.title = 'Pause';
+        journeyToggle.querySelector('.journey-pause-icon').hidden = false;
+        journeyToggle.querySelector('.journey-play-icon').hidden = true;
+        journeyProgress.classList.remove('is-paused');
+        updateJourneyPhoto(false);
+        journeyTimer = window.setInterval(() => stepPhotoJourney(1), 4500);
+      }
+
+      function stepPhotoJourney(direction) {
+        if (photos.length < 2) return;
+        journeyIndex = (journeyIndex + direction + photos.length) % photos.length;
+        updateJourneyPhoto(true);
+      }
+
+      function openPhotoJourney(index, trigger) {
+        journeyPreviousFocus = trigger;
+        journeyIndex = index;
+        journeyIsPaused = reducedMotion;
+        photoJourney.hidden = false;
+        document.body.classList.add('photo-journey-open');
+        updateJourneyPhoto(true);
+        if (journeyIsPaused) {
+          journeyToggle.setAttribute('aria-pressed', 'true');
+          journeyToggle.setAttribute('aria-label', 'Play photo journey');
+          journeyToggle.title = 'Play';
+          journeyToggle.querySelector('.journey-pause-icon').hidden = true;
+          journeyToggle.querySelector('.journey-play-icon').hidden = false;
+          journeyProgress.classList.add('is-paused');
+        } else {
+          startPhotoJourney();
+        }
+        requestAnimationFrame(() => {
+          photoJourney.classList.add('is-open');
+          document.getElementById('journeyClose').focus();
+        });
+      }
+
+      function closePhotoJourney() {
+        stopPhotoJourney();
+        photoJourney.classList.remove('is-open');
+        document.body.classList.remove('photo-journey-open');
+        window.setTimeout(() => {
+          photoJourney.hidden = true;
+          journeyPreviousFocus?.focus();
+        }, reducedMotion ? 0 : 330);
+      }
+
+      document.getElementById('journeyPrev').addEventListener('click', () => stepPhotoJourney(-1));
+      document.getElementById('journeyNext').addEventListener('click', () => stepPhotoJourney(1));
+      document.getElementById('journeyClose').addEventListener('click', closePhotoJourney);
+      journeyToggle.addEventListener('click', () => {
+        if (journeyIsPaused) startPhotoJourney();
+        else {
+          journeyIsPaused = true;
+          stopPhotoJourney();
+          journeyToggle.setAttribute('aria-pressed', 'true');
+          journeyToggle.setAttribute('aria-label', 'Play photo journey');
+          journeyToggle.title = 'Play';
+          journeyToggle.querySelector('.journey-pause-icon').hidden = true;
+          journeyToggle.querySelector('.journey-play-icon').hidden = false;
+        }
+      });
+      photoJourney.addEventListener('click', event => { if (event.target === photoJourney) closePhotoJourney(); });
+      document.addEventListener('keydown', event => {
+        if (photoJourney.hidden) return;
+        if (event.key === 'Escape') closePhotoJourney();
+        if (event.key === 'ArrowRight') stepPhotoJourney(1);
+        if (event.key === 'ArrowLeft') stepPhotoJourney(-1);
+      });
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) stopPhotoJourney();
+        else if (!photoJourney.hidden && !journeyIsPaused) startPhotoJourney();
+      });
 
       const eventTrack = document.getElementById('eventTrack');
       const eventDots = document.getElementById('eventDots');
@@ -586,13 +754,22 @@
         eventTrack.append(card);
       });
       const eventCards = [...eventTrack.querySelectorAll('.event-card')];
+      const setActiveEvent = index => {
+        const safeIndex = Math.max(0, Math.min(index, eventCards.length - 1));
+        eventCards.forEach((card, cardIndex) => {
+          const isActive = cardIndex === safeIndex;
+          card.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'nearest', inline: 'center' });
+          if (isActive) card.style.opacity = '1';
+        });
+        [...eventDots.children].forEach((dot, dotIndex) => dot.setAttribute('aria-current', dotIndex === safeIndex ? 'true' : 'false'));
+      };
       eventCards.forEach((card, index) => {
         const dot = document.createElement('button');
         dot.className = 'event-dot';
         dot.type = 'button';
         dot.setAttribute('aria-label', `Show ${card.querySelector('h3').textContent}`);
         dot.setAttribute('aria-current', index === 0 ? 'true' : 'false');
-        dot.addEventListener('click', () => card.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'nearest', inline: 'center' }));
+        dot.addEventListener('click', () => setActiveEvent(index));
         eventDots.append(dot);
       });
       const eventObserver = new IntersectionObserver(entries => {
@@ -604,6 +781,14 @@
         });
       }, { root: eventTrack, threshold: .65 });
       eventCards.forEach(card => eventObserver.observe(card));
+      document.getElementById('eventPrev').addEventListener('click', () => {
+        const currentIndex = [...eventDots.children].findIndex(dot => dot.getAttribute('aria-current') === 'true');
+        setActiveEvent(currentIndex > 0 ? currentIndex - 1 : eventCards.length - 1);
+      });
+      document.getElementById('eventNext').addEventListener('click', () => {
+        const currentIndex = [...eventDots.children].findIndex(dot => dot.getAttribute('aria-current') === 'true');
+        setActiveEvent(currentIndex < eventCards.length - 1 ? currentIndex + 1 : 0);
+      });
 
       const songData = details.songs;
       const songInput = document.getElementById('songInput');
