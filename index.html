@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#7a1113">
   <meta name="description" content="A wedding invitation celebrating Meenal and Avinash, July 1, 2026.">
-  <title>Meenal &amp; Avinash — A Wedding Invitation</title>
+  <title>Nikita &amp; Himanshu — A Wedding Invitation</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -159,34 +159,6 @@
     .event-dots { display: flex; justify-content: center; gap: 7px; }
     .event-dot { width: 6px; height: 6px; padding: 0; border: 0; border-radius: 50%; background: #d5c9bb; }
     .event-dot[aria-current="true"] { width: 17px; border-radius: 5px; background: var(--wine); }
-    .rsvp-section { background: #f1e9df; text-align: left; }
-    .rsvp-section .section-heading { text-align: center; }
-    .rsvp-form { margin-top: 28px; }
-    .field { margin: 0 0 17px; }
-    .field label, .field legend { display: block; margin-bottom: 7px; color: var(--ink); font-size: 10px; font-weight: 600; }
-    .field input, .field select, .field textarea { width: 100%; min-height: 43px; padding: 11px 12px; border: 1px solid rgba(80,55,44,.22); border-radius: 0; color: var(--ink); background: #fffdf9; font-size: 12px; }
-    .field textarea { min-height: 82px; resize: vertical; }
-    .field input::placeholder, .field textarea::placeholder { color: #9b9087; }
-    .field-row { display: grid; grid-template-columns: 98px 1fr; gap: 9px; }
-    fieldset.field { padding: 0; border: 0; }
-    .choice-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-    .choice { position: relative; }
-    .choice input { position: absolute; opacity: 0; }
-    .choice span { display: flex; min-height: 42px; align-items: center; justify-content: center; padding: 8px; border: 1px solid rgba(80,55,44,.22); color: var(--muted); background: #fffdf9; font-size: 10px; text-align: center; cursor: pointer; }
-    .choice input:checked + span { border-color: var(--wine); color: var(--wine); background: #f8eeea; }
-    .choice input:focus-visible + span { outline: 2px solid var(--gold); outline-offset: 2px; }
-    .checks { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 7px; }
-    .check { display: flex; align-items: flex-start; gap: 7px; color: var(--muted); font-size: 10px; line-height: 1.4; }
-    .check input { width: 15px; min-height: 15px; height: 15px; margin: 0; accent-color: var(--wine); }
-    .song-results { position: absolute; z-index: 2; right: 0; left: 0; top: 100%; display: none; border: 1px solid var(--line); background: #fffdfa; box-shadow: 0 10px 18px rgba(45,36,36,.1); }
-    .song-results.is-open { display: block; }
-    .song-option { display: flex; width: 100%; align-items: center; gap: 10px; padding: 9px; border: 0; border-bottom: 1px solid #eee6dc; background: transparent; text-align: left; }
-    .song-option:hover { background: #f6efe6; }
-    .album-art { display: grid; width: 33px; height: 33px; place-items: center; color: #fff0cf; background: linear-gradient(135deg, #7a1113, #bd8a43); font-family: var(--serif); font-size: 17px; }
-    .song-option strong { display: block; color: var(--ink); font-size: 10px; font-weight: 600; }
-    .song-option small { display: block; margin-top: 3px; color: var(--muted); font-size: 9px; }
-    .submit-button { width: 100%; min-height: 48px; margin-top: 3px; }
-    .form-note { min-height: 14px; margin: 10px 0 0; color: var(--wine); font-size: 10px; text-align: center; }
     .footer { padding: 32px 20px 36px; color: var(--muted); background: #e9dfd2; text-align: center; }
     .footer-names { margin: 0 0 4px; color: var(--wine); font-family: var(--serif); font-size: 26px; }
     .footer p { margin: 0; font-size: 9px; letter-spacing: .1em; text-transform: uppercase; }
@@ -270,12 +242,6 @@
           </div>
         </div>
       </section>
-      <section class="section section-paper" aria-labelledby="venueHeading">
-        <p class="eyebrow">Where our forever begins</p><h2 class="section-title" id="venueHeading">The Venue</h2>
-        <div class="venue-photo"><img id="venueImage" alt="" loading="lazy" hidden><div class="venue-placeholder" id="venuePlaceholder" aria-hidden="true">✦</div></div>
-        <h3 class="venue-name" id="venueName">Venue details to follow</h3><p class="venue-address" id="venueAddress">Location will be shared soon.</p>
-        <a class="action-link venue-map" id="venueMap" target="_blank" rel="noopener noreferrer" hidden>⌖ &nbsp; View on Maps</a>
-      </section>
       <section class="section events-section" aria-labelledby="eventsHeading">
         <div class="section-heading"><p class="eyebrow">Come celebrate with us</p><h2 class="section-title" id="eventsHeading">The Festivities</h2><p class="section-copy">Every gathering has a little magic of its own.</p></div>
         <div class="event-track" id="eventTrack" tabindex="0" aria-label="Wedding festivities, swipe to browse"></div>
@@ -285,24 +251,15 @@
           <button class="event-slider-button" id="eventNext" type="button" aria-label="Next event"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m10 5 7 7-7 7"/><path d="M5 12h11"/></svg></button>
         </div>
       </section>
-      <section class="section rsvp-section" id="rsvp" aria-labelledby="rsvpHeading">
-        <div class="section-heading"><p class="eyebrow">We hope you can join us</p><h2 class="section-title" id="rsvpHeading">Kindly reply</h2><p class="section-copy">Your presence would mean the world to us.</p></div>
-        <form class="rsvp-form" id="rsvpForm">
-          <div class="field"><label for="guestName">Your name</label><input id="guestName" name="name" autocomplete="name" placeholder="First and last name" required></div>
-          <div class="field"><label for="phone">Phone number</label><div class="field-row"><select id="countryCode" name="countryCode" aria-label="Country calling code"><option value="+91">🇮🇳 +91</option><option value="+1">🇺🇸 +1</option><option value="+44">🇬🇧 +44</option><option value="+61">🇦🇺 +61</option><option value="+971">🇦🇪 +971</option></select><input id="phone" name="phone" type="tel" autocomplete="tel-national" inputmode="tel" placeholder="Phone number" required></div></div>
-          <fieldset class="field"><legend>Will you be joining us?</legend><div class="choice-row"><label class="choice"><input type="radio" name="attendance" value="accept" checked><span>Joyfully accept</span></label><label class="choice"><input type="radio" name="attendance" value="decline"><span>Regretfully decline</span></label></div></fieldset>
-          <div class="field" id="partyField"><label for="partySize">Party size</label><select id="partySize" name="partySize"><option value="1">1 · Just me</option><option value="2">2 guests</option><option value="3">3 guests</option><option value="4">4+ guests</option></select></div>
-          <fieldset class="field" id="eventsField"><legend>Which festivities will you attend?</legend><div class="checks" id="rsvpEvents"></div></fieldset>
-          <div class="field" style="position:relative"><label for="songInput">A song for the dance floor</label><input id="songInput" name="song" autocomplete="off" placeholder="Search a song or artist"><div class="song-results" id="songResults" role="listbox" aria-label="Suggested songs"></div></div>
-          <div class="field"><label for="diet">Dietary preferences</label><select id="diet" name="diet"><option>No specific preferences</option><option>Vegetarian</option><option>Jain</option><option>Vegan</option></select></div>
-          <div class="field"><label for="wishes">A note for the couple <span style="font-weight:400;color:var(--muted)">(optional)</span></label><textarea id="wishes" name="wishes" placeholder="Share a wish, a memory, or your best marriage advice..."></textarea></div>
-          <button class="submit-button" id="submitButton" type="submit">Send RSVP <span aria-hidden="true">→</span></button><p class="form-note" id="formNote" aria-live="polite"></p>
-        </form>
+      <section class="section section-paper" aria-labelledby="venueHeading">
+        <p class="eyebrow">Where our forever begins</p><h2 class="section-title" id="venueHeading">The Venue</h2>
+        <div class="venue-photo"><img id="venueImage" alt="" loading="lazy" hidden><div class="venue-placeholder" id="venuePlaceholder" aria-hidden="true">✦</div></div>
+        <h3 class="venue-name" id="venueName">Venue details to follow</h3><p class="venue-address" id="venueAddress">Location will be shared soon.</p>
+        <a class="action-link venue-map" id="venueMap" target="_blank" rel="noopener noreferrer" hidden>⌖ &nbsp; View on Maps</a>
       </section>
       <footer class="footer"><p class="footer-names" id="footerNames"></p><p id="footerDate"></p></footer>
     </div>
   </main>
-  <div class="modal-backdrop" id="successModal" role="dialog" aria-modal="true" aria-labelledby="successTitle" aria-describedby="successMessage"><div class="success-modal"><div class="success-mark" aria-hidden="true">✓</div><h2 id="successTitle">Thank you</h2><p id="successMessage">We can't wait to celebrate together.</p><button class="modal-close" id="modalClose" type="button">Back to invitation</button></div></div>
   <div class="photo-journey" id="photoJourney" role="dialog" aria-modal="true" aria-label="Couple photo journey" hidden>
     <div class="journey-top"><span class="journey-count" id="journeyCount"></span><button class="journey-close" id="journeyClose" type="button" aria-label="Close photo viewer" title="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
     <div class="journey-stage">
@@ -358,18 +315,6 @@
         }
         const venueMap = document.getElementById('venueMap');
         if (details.venue.mapsUrl) { venueMap.href = details.venue.mapsUrl; venueMap.hidden = false; }
-        const RSVPEvents = document.getElementById('rsvpEvents');
-        RSVPEvents.replaceChildren(...details.events.map(event => {
-          const label = document.createElement('label');
-          label.className = 'check';
-          const checkbox = document.createElement('input');
-          checkbox.type = 'checkbox';
-          checkbox.name = 'events';
-          checkbox.value = event.name;
-          label.append(checkbox, ` ${event.name}`);
-          return label;
-        }));
-        document.getElementById('eventsField').hidden = details.events.length === 0;
       }
       applyDetails();
 
@@ -846,65 +791,6 @@
         setActiveEvent(currentIndex < eventCards.length - 1 ? currentIndex + 1 : 0);
       });
 
-      const songData = details.songs;
-      const songInput = document.getElementById('songInput');
-      const songResults = document.getElementById('songResults');
-      let songTimer;
-      songInput.addEventListener('input', () => {
-        window.clearTimeout(songTimer);
-        songTimer = window.setTimeout(() => {
-          const query = songInput.value.trim().toLowerCase();
-          songResults.replaceChildren();
-          if (query.length < 2) { songResults.classList.remove('is-open'); return; }
-          const matches = songData.filter(song => `${song.title} ${song.artist}`.toLowerCase().includes(query));
-          if (!matches.length) { songResults.classList.remove('is-open'); return; }
-          matches.slice(0, 4).forEach(song => {
-            const option = document.createElement('button');
-            option.className = 'song-option';
-            option.type = 'button';
-            option.setAttribute('role', 'option');
-            option.innerHTML = `<span class="album-art" aria-hidden="true">♪</span><span><strong></strong><small></small></span>`;
-            option.querySelector('strong').textContent = song.title;
-            option.querySelector('small').textContent = song.artist;
-            option.addEventListener('click', () => { songInput.value = `${song.title} — ${song.artist}`; songResults.classList.remove('is-open'); songInput.focus(); });
-            songResults.append(option);
-          });
-          songResults.classList.add('is-open');
-        }, 220);
-      });
-      document.addEventListener('click', event => { if (!event.target.closest('#songInput') && !event.target.closest('#songResults')) songResults.classList.remove('is-open'); });
-
-      document.querySelectorAll('input[name="attendance"]').forEach(radio => radio.addEventListener('change', () => {
-        const attending = document.querySelector('input[name="attendance"]:checked').value === 'accept';
-        document.getElementById('partyField').hidden = !attending;
-        document.getElementById('eventsField').hidden = !attending;
-      }));
-      const form = document.getElementById('rsvpForm');
-      const submitButton = document.getElementById('submitButton');
-      const modal = document.getElementById('successModal');
-      const modalClose = document.getElementById('modalClose');
-      form.addEventListener('submit', event => {
-        event.preventDefault();
-        if (!form.reportValidity()) return;
-        submitButton.disabled = true;
-        submitButton.textContent = 'Sending your reply…';
-        document.getElementById('formNote').textContent = '';
-        window.setTimeout(() => {
-          const guestName = document.getElementById('guestName').value.trim();
-          const isAttending = document.querySelector('input[name="attendance"]:checked').value === 'accept';
-          document.getElementById('successTitle').textContent = isAttending ? 'We saved you a seat' : 'Thank you for letting us know';
-          document.getElementById('successMessage').textContent = isAttending ? `Thank you, ${guestName}. We can't wait to celebrate together.` : `Thank you, ${guestName}. You'll be with us in spirit.`;
-          modal.classList.add('is-open');
-          modalClose.focus();
-          burst(window.innerWidth / 2, window.innerHeight * .43, 115);
-          submitButton.disabled = false;
-          submitButton.innerHTML = 'Send RSVP <span aria-hidden="true">→</span>';
-        }, 750);
-      });
-      function closeModal() { modal.classList.remove('is-open'); document.getElementById('submitButton').focus(); }
-      modalClose.addEventListener('click', closeModal);
-      modal.addEventListener('click', event => { if (event.target === modal) closeModal(); });
-      document.addEventListener('keydown', event => { if (event.key === 'Escape' && modal.classList.contains('is-open')) closeModal(); });
     })();
   </script>
 </body>
