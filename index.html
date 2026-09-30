@@ -536,7 +536,7 @@
           canvas.classList.add('cleared');
           scratched++;
           if (scratched === scratchCanvases.length) {
-            document.getElementById('scratchNote').textContent = 'July 1, 2026. We saved you a place.';
+            document.getElementById('scratchNote').textContent = `${details.dateLabel}. We saved you a place.`;
             burst(window.innerWidth / 2, window.innerHeight * .48, 130);
           }
         }
