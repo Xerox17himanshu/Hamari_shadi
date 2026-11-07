@@ -20,14 +20,8 @@ window.invitationData = {
   },
 
   photos: [
-    { src: "photos/image1.jpeg", caption: "A moment to remember · 01", alt: "Wedding photo 1" },
-    { src: "photos/image2.jpeg", caption: "A moment to remember · 02", alt: "Wedding photo 2" },
-    { src: "photos/image3.jpeg", caption: "A moment to remember · 03", alt: "Wedding photo 3" },
-    { src: "photos/image4.jpeg", caption: "A moment to remember · 04", alt: "Wedding photo 4" },
-    { src: "photos/image5.jpeg", caption: "A moment to remember · 05", alt: "Wedding photo 5" },
-    { src: "photos/image7.jpeg", caption: "A moment to remember · 07", alt: "Wedding photo 7" },
-    { src: "photos/image8.jpeg", caption: "A moment to remember · 08", alt: "Wedding photo 8" },
-    { src: "photos/image9.jpeg", caption: "A moment to remember · 09", alt: "Wedding photo 9" }
+    { src: "photos/image1.png", caption: "A moment to remember · 01", alt: "Wedding photo 1" },
+    { src: "photos/image2.png", caption: "A moment to remember · 02", alt: "Wedding photo 2" }
   ],
 
   events: [
